@@ -30,10 +30,12 @@ var app = express()
 
 app.get('/turn_led_on', function (req, res) {
   turnLed(1);
+  res.sendStatus(200);
 })
 
 app.get('/turn_led_off', function (req, res) {
   turnLed(0);
+  res.sendStatus(200);
 })
 
 app.listen(3000, function () {
