@@ -15,6 +15,8 @@
     "Raspberry Pi"
   ],
   "dependencies": {
+    "express": "^4.15.2",
+    "localtunnel": "^1.8.2",
     "wiring-pi": ">=2.1.1"
   },
   "author": "Leon Anavi <leon@anavi.org>",
