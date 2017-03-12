@@ -1,6 +1,6 @@
 var wpi = require('wiring-pi');
 var express = require('express')
-
+var localtunnel = require('localtunnel');
 
 
 // GPIO pin of the led
@@ -39,3 +39,27 @@ app.get('/turn_led_off', function (req, res) {
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
+// <-- END EXPRESS -->
+
+
+
+// <-- BEGIN LOCALTUNNEL -->
+var tunnel = localtunnel(
+		3000, 
+		{
+			subdomain: "itsclarelymeled"
+		},
+		function(err, tunnel) {
+    if (err) {
+    	console.log("Tunnel error " + err);
+    	return;
+    }
+
+    // the assigned public url for your tunnel
+    // i.e. https://itsclarelymeled.localtunnel.me
+    console.log(`Tunnel open in ${tunnel.url}`);
+});
+
+tunnel.on('close', function() {
+    console.log("Tunnel closed");
+});
